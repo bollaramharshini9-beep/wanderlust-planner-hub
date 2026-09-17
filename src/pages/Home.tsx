@@ -3,54 +3,20 @@ import TourPackageCard from "@/components/TourPackageCard";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Compass, Shield, Clock, Heart } from "lucide-react";
-import beachImage from "@/assets/package-beach.jpg";
-import mountainImage from "@/assets/package-mountain.jpg";
-import cityImage from "@/assets/package-city.jpg";
+import { tourPackages, formatPrice } from "@/data/packages";
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const featuredPackages = [
-    {
-      title: "Tropical Paradise",
-      image: beachImage,
-      price: "$1,299",
-      duration: "7 Days",
-      location: "Maldives",
-      highlights: [
-        "Luxury beachfront resort",
-        "Snorkeling & diving",
-        "All meals included",
-        "Spa treatments"
-      ]
-    },
-    {
-      title: "Mountain Adventure",
-      image: mountainImage,
-      price: "$899",
-      duration: "5 Days",
-      location: "Swiss Alps",
-      highlights: [
-        "Guided hiking tours",
-        "Mountain lodge stay",
-        "Cable car rides",
-        "Local cuisine"
-      ]
-    },
-    {
-      title: "Cultural Explorer",
-      image: cityImage,
-      price: "$1,499",
-      duration: "10 Days",
-      location: "Europe",
-      highlights: [
-        "Visit 5 cities",
-        "Historical tours",
-        "Museum passes",
-        "Local guides"
-      ]
-    }
-  ];
+  const featuredPackages = tourPackages.slice(0, 3).map((pkg) => ({
+    title: pkg.title,
+    image: pkg.image,
+    price: formatPrice(pkg.price),
+    duration: `${pkg.durationDays} Days`,
+    location: pkg.location,
+    highlights: pkg.highlights,
+  }));
+
 
   const features = [
     {
