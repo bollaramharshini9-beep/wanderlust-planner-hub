@@ -68,7 +68,15 @@ const Packages = () => {
       <section className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg, index) => (
-            <TourPackageCard key={index} {...pkg} />
+            <TourPackageCard
+              key={index}
+              title={pkg.title}
+              image={pkg.image}
+              price={formatPrice(pkg.price)}
+              duration={`${pkg.durationDays} Days`}
+              location={pkg.location}
+              highlights={pkg.highlights}
+            />
           ))}
         </div>
       </section>
